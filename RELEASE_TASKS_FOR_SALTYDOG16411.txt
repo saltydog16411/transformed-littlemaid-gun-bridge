@@ -1,0 +1,155 @@
+saltydog16411 が実施する公開タスクリスト
+========================================
+
+現在地
+------
+[完了] GitHubアカウント: saltydog16411
+[完了] 公開名: Transformed LittleMaid Gun Bridge
+[完了] 作者表記: saltydog16411
+[完了] 正式配布元: GitHub
+[完了] 日本語紹介・質問窓口: Minecraft Japan Forum
+[完了] 内部正常動作基準: 1.0.15
+[完了] 1.0.16-rc1用の正式ForgeGradleソース構成を作成
+
+あなたが次に行うこと
+====================
+
+STEP 1  GitHubリポジトリを作る
+-----------------------------
+[ ] GitHubで新規リポジトリを作成する。
+    推奨名: transformed-littlemaid-gun-bridge
+[ ] Publicリポジトリにする。
+[ ] README、LICENSE、.gitignoreをGitHub側で自動生成しない。
+    このプロジェクトに用意したファイルをそのまま使うため。
+
+STEP 2  正式Gradle Wrapperを入れる
+--------------------------------
+[ ] Forge公式サイトから Minecraft 1.20.1 / Forge 47.4.10 MDKをダウンロード。
+[ ] MDKから以下をプロジェクトへコピー。
+      gradlew
+      gradlew.bat
+      gradle/wrapper/gradle-wrapper.jar
+      gradle/wrapper/gradle-wrapper.properties
+[ ] gradlew.bat --version を実行し、Gradleが起動することを確認。
+[ ] このWrapper一式はGitHubへコミットする。
+
+STEP 3  ローカルビルド用の前提JARを配置
+--------------------------------------
+[ ] libs/README.txtに書かれた6個のJARをlibs/へコピー。
+[ ] git statusでlibs/*.jarが追跡対象になっていないことを確認。
+[ ] 第三者MOD JARをGitHubへアップロードしない。
+
+STEP 4  最初の正式ビルド
+-----------------------
+[ ] Java 17であることを確認。
+      java -version
+[ ] 次を実行。
+      gradlew.bat clean build
+[ ] build/libs/に次が生成されることを確認。
+      TransformedLittleMaidGunBridge-1.20.1-1.0.16-rc1.jar
+[ ] sources JARが生成されることも確認。
+
+STEP 5  JAR静的確認
+------------------
+[ ] JARを7-Zip等で開く。
+[ ] META-INF/mods.toml がある。
+[ ] transformedlittlemaidgunbridge.mixins.json がある。
+[ ] LICENSE.txt がある。
+[ ] THIRD_PARTY_NOTICES.txt がある。
+[ ] Manifestに MixinConfigs: transformedlittlemaidgunbridge.mixins.json がある。
+[ ] 第三者MODのclass、texture、model、JARが混入していない。
+[ ] SHA-256を計算して保存する。
+    Windows PowerShell例:
+      Get-FileHash .\build\libs\TransformedLittleMaidGunBridge-1.20.1-1.0.16-rc1.jar -Algorithm SHA256
+
+STEP 6  最小構成でRC実機試験
+---------------------------
+[ ] Minecraft 1.20.1 / Forge 47.4.10 / Java 17。
+[ ] 必須MODだけを中心にした最小構成を作る。
+[ ] デフォルトメイドで変身。
+[ ] L85を一人称腰だめ表示。
+[ ] ADS。
+[ ] 発砲/反動。
+[ ] リロード。
+[ ] 三人称表示。
+[ ] 変身解除後、通常プレイヤー腕へ戻る。
+[ ] 再変身して再びメイド腕になる。
+[ ] ワールド退出→再入場。
+[ ] F3+T後も正常。
+[ ] 左利き設定。
+[ ] L85以外の銃を最低2種類。
+[ ] リロード方式の異なる銃を最低2種類。
+[ ] latest.log / debug.logに本MOD由来のERRORがない。
+
+STEP 7  LittleForces回帰試験
+---------------------------
+[ ] LFS系を1種類以上。
+[ ] LFMS系を1種類以上。
+[ ] 違う迷彩色を2色以上。
+[ ] 腕が赤くならない。
+[ ] 職種差分ではなく基本迷彩腕になっている。
+
+STEP 8  普段の大型MOD構成で試験
+------------------------------
+[ ] Embeddium/Oculusあり。
+[ ] Leawind Third Personあり。
+[ ] 普段使用するその他MODあり。
+[ ] 一人称/三人称/ADS/リロードを確認。
+[ ] 新規クラッシュ・ERRORがない。
+
+STEP 9  クライアント専用性の試験
+-------------------------------
+[ ] TLMGBをクライアントだけに入れる。
+[ ] TLMGBが入っていないForgeサーバーへ接続できることを確認。
+[ ] サーバー一覧にMOD不一致の赤いXが出ないことを確認。
+[ ] 可能ならTLMGB JARを専用サーバーmodsへ誤配置しても、
+    クライアントclass参照による起動クラッシュを起こさないことを確認。
+
+STEP 10  権利・公開文の最終確認
+------------------------------
+[ ] LICENSE.txtを読み直す。
+[ ] THIRD_PARTY_NOTICES.txtを読み直す。
+[ ] LittleForces/GVCGun's2等の素材を同梱していないことを再確認。
+[ ] GitHub READMEで「非公式」「第三者素材を同梱しない」と明記されている。
+[ ] 必要と判断した場合、準備済み文案で上流作者へ事前連絡する。
+
+STEP 11  GitHubへソースをpush
+----------------------------
+[ ] .gitignoreが有効。
+[ ] build/、run/、.gradle/、libs/*.jarがpush対象外。
+[ ] ソース、Gradle Wrapper、TXT文書だけをpush。
+[ ] タグを付ける前にGitHub上でファイル一覧を目視確認。
+
+STEP 12  1.0.16-rc1をGitHub Releasesへ公開
+-----------------------------------------
+[ ] Git tag: v1.0.16-rc1
+[ ] Pre-releaseとして作成。
+[ ] 公開するバイナリは正式ビルドしたJARのみ。
+[ ] SHA-256をRelease本文へ記載。
+[ ] 対応バージョンと必須MODを明記。
+[ ] 「試作版1.0.1～1.0.15は公開しない」とする。
+[ ] RC期間中は新機能を追加せず、重大バグのみ修正。
+
+STEP 13  RC確認後にStable化
+--------------------------
+[ ] RCで重大問題がない期間を設ける。
+[ ] 必要な修正がある場合はrc2以降を作る。
+[ ] 問題が収束したら1.0.16 stableをclean build。
+[ ] stable JARでも同じ回帰試験の主要項目を再確認。
+[ ] Git tag: v1.0.16
+[ ] GitHub Releasesで正式版を公開。
+
+STEP 14  Minecraft Japan Forumへ紹介
+-----------------------------------
+[ ] Forumに紹介スレッドを作る。
+[ ] JARをForum側で別管理しない。
+[ ] ダウンロード先はGitHub Releasesへ一本化。
+[ ] 必須MOD・対応バージョン・非公式MODであることを明記。
+[ ] 更新時もGitHub Releaseを正本として案内する。
+
+公開後
+------
+[ ] バグ報告にはMinecraft/Forge/前提MODバージョン、再現手順、latest.logを求める。
+[ ] 1.0.xでは原則バグ修正のみ。
+[ ] 新対応や大きな仕様変更は1.1.x以降。
+[ ] 上流MOD更新で壊れた場合は、確認完了まで未対応と明記する。

@@ -1,0 +1,27 @@
+変更履歴
+========
+
+1.0.16-rc1
+-----------
+公開候補版。
+
+・公開名を Transformed LittleMaid Gun Bridge に整理。
+・modIdを transformedlittlemaidgunbridge に整理。
+・作者/管理者表記を saltydog16411 に統一。
+・Java packageを io.github.saltydog16411.transformedlittlemaidgunbridge に移行。
+・内部版1.0.15で確認済みの腕描画ロジックを維持。
+・専用サーバー上ではクライアントコードを初期化しないようDistExecutorで分離。
+・クライアント専用MOD向けに displayTest=IGNORE_ALL_VERSION を設定。
+・開発用System.out診断ログを削除し、異常時のみWARNを1回出す方式へ整理。
+・RenderHandEventがキャンセルされた場合でも描画コンテキストを必ず破棄するよう整理。
+・ForgeGradle 6 / Java 17の正式なソースプロジェクト構成を追加。
+・第三者MOD JARはlibs/にローカル配置し、Git管理・再配布しない方式へ整理。
+
+内部版1.0.15
+-------------
+・デフォルトメイド、LittleForcesの一人称腕表示を実機確認。
+・NO_OVERLAY修正により赤いダメージ系オーバーレイを解消。
+・三人称HMG2/GVCLib銃表示を確認。
+
+注意:
+内部試作版1.0.1～1.0.15は一般公開しません。

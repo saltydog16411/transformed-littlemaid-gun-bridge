@@ -1,0 +1,27 @@
+# Gradle
+.gradle/
+build/
+repo/
+
+# ForgeGradle run directory
+run/
+
+# IDE
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+bin/
+out/
+
+# Local third-party mod JARs - NEVER COMMIT
+libs/*.jar
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs / crash reports
+*.log
+crash-reports/

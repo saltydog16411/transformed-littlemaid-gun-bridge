@@ -1,0 +1,60 @@
+正式ビルド手順
+==============
+
+対象
+----
+Minecraft 1.20.1
+Forge 47.4.10
+Java 17
+ForgeGradle 6.x
+
+A. 最初に1回だけ行う準備
+------------------------
+1. Java 17 JDKをインストールします。
+2. Forge公式サイトから Minecraft 1.20.1 - Forge 47.4.10 のMDKを取得します。
+3. MDK内の次の4ファイルを、このプロジェクトの同じ場所へコピーします。
+
+   gradlew
+   gradlew.bat
+   gradle/wrapper/gradle-wrapper.jar
+   gradle/wrapper/gradle-wrapper.properties
+
+   このZIPにはGradle WrapperのバイナリJARを生成環境の制約上同梱していません。
+   GitHubへ正式公開する前に、必ずForge公式MDK由来のWrapper一式へ置き換えてください。
+
+4. libs/README.txtに書かれている6個の第三者MOD JARを各正式配布元から取得し、
+   libs/へ置きます。
+5. 第三者MOD JARはGitHubへコミットしません。
+
+B. WindowsでJARをビルド
+-----------------------
+プロジェクトフォルダでPowerShellまたはコマンドプロンプトを開きます。
+
+  gradlew.bat clean build
+
+成功すると、次の場所に公開候補JARが生成されます。
+
+  build/libs/TransformedLittleMaidGunBridge-1.20.1-1.0.16-rc1.jar
+
+sources JARも生成されます。
+
+  build/libs/TransformedLittleMaidGunBridge-1.20.1-1.0.16-rc1-sources.jar
+
+C. ビルド前提JARが不足している場合
+----------------------------------
+compileJavaの前に checkLocalDependencies が実行され、不足ファイル名を表示して停止します。
+libs/README.txtと表示されたファイル名を確認してください。
+
+D. runClientについて
+-------------------
+gradlew.bat runClient も設定していますが、これはビルドより多くの前提MODを必要とします。
+TILM/LMML/LMRB等の実際の依存MODを開発環境へ揃えてから使用してください。
+
+E. 公開前に必ず行うこと
+----------------------
+1. clean buildを成功させる。
+2. build/libsのJARを実際のMinecraftへ入れる。
+3. RELEASE_TASKS_FOR_SALTYDOG16411.txtのRC試験を行う。
+4. JARのSHA-256を記録する。
+5. JAR内にLICENSE.txt、THIRD_PARTY_NOTICES.txt、MixinConfigs manifest、mods.tomlがあることを確認する。
+6. 問題がなければ1.0.16-rc1としてGitHub Releasesへ出す。

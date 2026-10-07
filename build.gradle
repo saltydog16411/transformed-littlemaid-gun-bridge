@@ -1,0 +1,152 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = archives_base_name
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+    withSourcesJar()
+}
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
+
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'info'
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {
+        }
+
+        server {
+            args '--nogui'
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+// Compile-time compatibility dependencies are intentionally local files.
+// Their original JARs are NOT redistributed by this project.
+// See libs/README.txt for exact tested filenames and where to obtain them.
+def localModJars = [
+    'TILM-1.20.1-5.0.0-Forge.jar',
+    'LMML-1.20.1-8.0.5-Forge.jar',
+    'LMRBCompat-1.20.1-1.1.0-Forge.jar',
+    'GVCLib__1.20.1__beta6.1.jar',
+    'HandmadeGuns2__1.20.1__beta1.3.jar',
+    'GVCObjModel__1.20.1__2.4.jar'
+]
+
+tasks.register('checkLocalDependencies') {
+    group = 'verification'
+    description = 'Checks that required local compile-time mod JARs are present in libs/.'
+    doLast {
+        def missing = localModJars.findAll { !file("libs/${it}").isFile() }
+        if (!missing.isEmpty()) {
+            throw new GradleException(
+                'Missing required local mod JARs in libs/:\n - ' +
+                missing.join('\n - ') +
+                '\nSee libs/README.txt. Do not commit these third-party JARs to Git.'
+            )
+        }
+    }
+}
+
+repositories {
+    // ForgeGradle adds Forge Maven and Maven Central automatically.
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // fg.deobf remaps the production mod JARs for the ForgeGradle dev mappings.
+    compileOnly fg.deobf(files('libs/TILM-1.20.1-5.0.0-Forge.jar'))
+    compileOnly fg.deobf(files('libs/LMML-1.20.1-8.0.5-Forge.jar'))
+    compileOnly fg.deobf(files('libs/LMRBCompat-1.20.1-1.1.0-Forge.jar'))
+    compileOnly fg.deobf(files('libs/GVCLib__1.20.1__beta6.1.jar'))
+    compileOnly fg.deobf(files('libs/HandmadeGuns2__1.20.1__beta1.3.jar'))
+    compileOnly fg.deobf(files('libs/GVCObjModel__1.20.1__2.4.jar'))
+}
+
+tasks.named('compileJava').configure {
+    dependsOn tasks.named('checkLocalDependencies')
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    def replaceProperties = [
+        minecraft_version       : minecraft_version,
+        minecraft_version_range : minecraft_version_range,
+        forge_version           : forge_version,
+        forge_version_range     : forge_version_range,
+        loader_version_range    : loader_version_range,
+        mod_id                  : mod_id,
+        mod_name                : mod_name,
+        mod_license             : mod_license,
+        mod_version             : mod_version,
+        mod_authors             : mod_authors
+    ]
+
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+
+    // Include the applicable license/notices in the built JAR without
+    // duplicating their editable copies under src/main/resources.
+    from(rootProject.file('LICENSE.txt')) { into '' }
+    from(rootProject.file('THIRD_PARTY_NOTICES.txt')) { into '' }
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+            'Specification-Title'      : mod_id,
+            'Specification-Vendor'     : mod_authors,
+            'Specification-Version'    : '1',
+            'Implementation-Title'     : project.name,
+            'Implementation-Version'   : project.jar.archiveVersion,
+            'Implementation-Vendor'    : mod_authors,
+            'MixinConfigs'             : "${mod_id}.mixins.json"
+        ])
+    }
+    finalizedBy 'reobfJar'
+}
+
+tasks.named('sourcesJar', Jar).configure {
+    archiveClassifier = 'sources'
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            artifact jar
+            artifact sourcesJar
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/repo"
+        }
+    }
+}

@@ -1,0 +1,41 @@
+公開前のご連絡文案
+==================
+
+これは許可が必須だと断定するための文章ではなく、公開前の礼儀として送る場合の文案です。
+公開者名は saltydog16411 です。送信前に公開予定URL等を追記してください。
+
+Sistr氏向け
+-----------
+件名: LittleMaid系互換MOD公開予定のご連絡
+
+Transform Into LittleMaid / LittleMaid ModelLoader / LittleMaid ReBirth / LMRBCompat と
+HandmadeGuns2/GVCLib の描画互換を目的とした、Minecraft 1.20.1 Forge向けクライアントMODを公開予定です。
+
+TILMでメイド化したプレイヤーがHMG2系の銃を持った際の三人称描画と、
+一人称の腕描画をメイドモデル側へ橋渡しするものです。
+LittleMaid系MODやモデル・テクスチャ等のアセットは同梱せず、各MODを別途導入する方式です。
+
+LittleMaid Licenceの非営利条件に合わせて非営利配布とし、
+非公式互換MODであること、各作者様とは別プロジェクトであることを明記する予定です。
+正式配布はGitHub、Minecraft Japan Forumには紹介スレッドを作成する予定です。
+
+公開前のご連絡としてお送りしました。
+表記・配布方法などで避けてほしい点がありましたら対応します。
+
+
+SCOPEMG36氏向け
+----------------
+件名: HandmadeGuns2/GVCLib互換MOD公開予定のご連絡
+
+Transform Into LittleMaidでメイド化したプレイヤーとHandmadeGuns2/GVCLibの描画互換を目的とした、
+Minecraft 1.20.1 Forge向けクライアントMODを公開予定です。
+
+GVCLibの一人称腕描画を利用しつつ、変身中のみ腕モデルをLittleMaid側へ差し替える処理と、
+LMRBCompatの銃描画レイヤーをTILM側へ追加する処理を行います。
+HandmadeGuns2、GVCLib、GVCObjModel、GVCGun's2本体・アセットは一切同梱しません。
+
+非公式互換MODであること、SCOPEMG36様 / TEAM GVC制作物とは別プロジェクトであることを明記します。
+正式配布はGitHub、Minecraft Japan Forumには紹介スレッドを作成する予定です。
+
+公開前のご連絡としてお送りしました。
+表記・配布方法などで避けてほしい点がありましたら対応します。

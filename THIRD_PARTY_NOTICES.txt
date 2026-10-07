@@ -1,0 +1,71 @@
+第三者制作物について
+====================
+
+Transformed LittleMaid Gun Bridge は非公式の互換MODです。
+下記のMOD、モデル、テクスチャ、コンテンツパック本体は同梱しません。
+
+Transform Into LittleMaid (TILM)
+  管理・作者: Sistr
+  用途: 必須
+  公開ライセンス: Forgeメタデータ上でLittleMaid Licenceを参照
+
+LittleMaid ModelLoader (LMML)
+  管理・作者: Sistr、および上流でクレジットされているLittleMaid関係者
+  用途: 必須
+  公開ライセンス: LittleMaid Licence
+
+LittleMaid ReBirth (LMRB)
+  管理・作者: Sistr
+  用途: LMRBCompatを含む確認環境で使用
+  公開ライセンス: LittleMaid Licence
+
+LMRBCompat
+  管理・作者: Sistr
+  用途: 必須
+  公開ライセンス: MIT
+
+HandmadeGuns2
+  管理・作者: SCOPEMG36 / TEAM GVC
+  用途: 必須
+  確認したForgeメタデータ: The Unlicense
+
+GVCLib
+  管理・作者: SCOPEMG36 / TEAM GVC
+  用途: 必須
+  確認したForgeメタデータ: The Unlicense
+
+GVCObjModel
+  管理・作者: SCOPEMG36 / TEAM GVC
+  用途: 必須
+  確認したForgeメタデータ: The Unlicense
+
+GVCGun's2
+  用途: 任意。動作確認に使用
+  このMODには同梱しません。
+
+LittleForces
+  用途: 任意。モデル・テクスチャの動作確認に使用
+  このMODには同梱しません。
+
+主な参照先
+----------
+LittleMaidReBirth関連スレッド
+https://forum.civa.jp/viewtopic.php?t=119
+
+LittleMaidReBirth
+https://github.com/SistrScarlet/LittleMaidReBirth-Architectury
+
+LittleMaid ModelLoader
+https://github.com/SistrScarlet/LittleMaidModelLoader-Architectury
+
+Transform Into LittleMaid
+https://github.com/SistrScarlet/Transform-Into-LittleMaid
+
+LMRBCompat
+https://github.com/SistrScarlet/LMRBCompat
+
+HandmadeGuns2 / GVCLib 関連スレッド
+https://forum.civa.jp/viewtopic.php?t=35
+
+各名称、商標、コード、モデル、テクスチャ、その他の制作物の権利は、それぞれの権利者に帰属します。
+本プロジェクトは各上流作者、Mojang Studios、Microsoft、Minecraft Forgeその他の第三者による公式・公認プロジェクトではありません。

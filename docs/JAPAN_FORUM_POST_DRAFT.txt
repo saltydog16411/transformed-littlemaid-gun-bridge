@@ -1,0 +1,40 @@
+Minecraft Japan Forum 紹介スレッド文案
+======================================
+
+タイトル案
+【1.20.1 Forge】Transformed LittleMaid Gun Bridge - TILM × HMG2/GVCLib 描画互換
+
+本文案
+------
+Transform Into LittleMaidでメイド化したプレイヤーと、HandmadeGuns2/GVCLibの銃描画を橋渡しする非公式クライアントMODです。
+
+主な機能
+・メイド化プレイヤーが三人称でHMG2系の銃を持って表示されます。
+・一人称の通常プレイヤー腕を、現在選択中のメイドモデルの腕へ置き換えます。
+・HMG2/GVCLibの腰だめ、ADS、反動、リロード位置を維持します。
+・LittleForcesでは職種装備差分ではなく、選択中の基本迷彩に対応する腕を表示します。
+
+作者 / 管理者
+saltydog16411
+
+正式配布元
+GitHub Releases: （公開後にURLを記入）
+
+ソースコード
+GitHub: （公開後にURLを記入）
+
+対応環境
+Minecraft 1.20.1
+Forge 47.4.10
+TILM 5.0.0
+LMML 8.0.5
+LMRB 8.6.7
+LMRBCompat 1.1.0
+GVCLib beta6.1
+HandmadeGuns2 beta1.3
+GVCObjModel 2.4
+
+注意
+・各前提MOD、GVCGun's2、LittleForces等は同梱していません。
+・各上流プロジェクトとは別の非公式互換MODです。
+・不具合報告時はMinecraft/Forge/各MODの正確なファイル名と再現手順をお願いします。

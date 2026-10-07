@@ -1,0 +1,21 @@
+公開者情報
+==========
+
+GitHubアカウント名
+saltydog16411
+
+公開作者名 / 管理者ハンドル
+saltydog16411
+
+mods.toml authors
+saltydog16411
+
+README / Release / Forumでの作者表記
+saltydog16411
+
+公開版Java package
+io.github.saltydog16411.transformedlittlemaidgunbridge
+
+表記方針
+GitHubアカウント名を正本とし、公開名は原則として「saltydog16411」に統一します。
+大文字小文字を変えた別表記は使いません。

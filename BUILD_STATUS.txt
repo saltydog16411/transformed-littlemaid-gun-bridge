@@ -1,0 +1,36 @@
+ビルド構成の検証状況
+====================
+
+作成済み
+--------
+・ForgeGradle 6.x形式の build.gradle / settings.gradle / gradle.properties
+・Java 17 toolchain指定
+・Minecraft 1.20.1 / Forge 47.4.10指定
+・正式公開用modId / package / authorsへの移行
+・DistExecutorによるクライアント初期化分離
+・displayTest=IGNORE_ALL_VERSION
+・第三者JARをlibs/へローカル配置し、Git管理から除外する構成
+・build時の前提JAR存在チェック
+・sources JAR生成設定
+・JAR ManifestのMixinConfigs設定
+・LICENSE.txt / THIRD_PARTY_NOTICES.txtのJAR同梱設定
+
+静的確認済み
+------------
+・内部版1.0.15で実機確認した左右腕の位置/回転/スケール定数を維持。
+・NO_OVERLAYを維持。
+・LittleForces LFS/LFMS基本迷彩解決ロジックを維持。
+・開発用System.out / printStackTraceを公開候補ソースから除去。
+・旧modId / 旧package / TLMGSログ接頭辞はsrc/から除去。
+・第三者JARはこのソースプロジェクト内に含めていない。
+
+未実施
+------
+この実行環境ではGradle WrapperのバイナリJARとForgeGradle/Minecraftの外部依存を
+オンライン取得して実際に gradlew build を完走させることができません。
+
+そのため、このソースは「正式ビルド構成を作成し、静的監査したRC候補」であり、
+公開可能な1.0.16-rc1 JARそのものではありません。
+
+saltydog16411側でForge 47.4.10公式MDKのWrapperを入れ、clean buildを成功させ、
+実機回帰試験を完了した時点で1.0.16-rc1を公開候補とします。

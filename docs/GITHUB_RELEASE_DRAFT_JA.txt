@@ -1,0 +1,24 @@
+GitHub Releases 公開文案
+========================
+
+Transformed LittleMaid Gun Bridge 1.0.16-rc1
+
+Minecraft 1.20.1 / Forge向けの非公式クライアント互換MODです。
+TILMでメイド化したプレイヤーとHandmadeGuns2/GVCLibの描画を橋渡しします。
+
+主な機能
+・三人称でHMG2系の銃を表示
+・一人称のSteve/Alex腕をメイドモデルの腕へ置換
+・HMG2/GVCLibのADS、反動、リロード位置を維持
+・LittleForcesでは基本迷彩に対応した腕テクスチャを使用
+
+作者 / 管理者
+saltydog16411
+
+注意
+・必要な前提MODは別途導入してください。
+・第三者MOD、モデル、テクスチャ、GVCGun's2等は同梱していません。
+・非公式互換MODです。
+・RC版では重大な不具合の確認を優先します。
+
+詳しい対応環境は README.txt と COMPATIBILITY.txt を参照してください。
